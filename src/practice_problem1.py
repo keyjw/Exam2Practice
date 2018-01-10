@@ -41,10 +41,10 @@ def main():
 
     # run_test_init()
     # run_test_append_string()
-    run_test_double()
-#     run_test_shrink()
-#     run_test_double_then_shrink()
-#     run_test_reset()
+    # run_test_double()
+    # run_test_shrink()
+    # run_test_double_then_shrink()
+    run_test_reset()
 #     run_test_steal()
 #     run_test_get_history()
 #     run_test_combined_box()
@@ -210,7 +210,7 @@ class Box(object):
         left_over = self.append_string(self.contents)
         return left_over
         # --------------------------------------------------------------
-        # DO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -258,8 +258,18 @@ class Box(object):
         Type hints:
           :type new_volume: int
         """
+        string = ''
+        s = ''
+        self.volume = new_volume
+        if len(self.contents) > new_volume:
+            for k in range(new_volume):
+                string = string + self.contents[k]
+            for k in range(new_volume, len(self.contents), 1):
+                s = s + self.contents[k]
+            self.contents = string
+        return s
         # --------------------------------------------------------------
-        # TODO: 5. Implement and test this function.
+        # DONE: 5. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -314,8 +324,10 @@ class Box(object):
         Type hints:
           :type new_volume: int
         """
+        left_over = self.double() + self.shrink(new_volume)
+        return len(left_over)
         # --------------------------------------------------------------
-        # TODO: 6. Implement and test this function.
+        # DONE: 6. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
