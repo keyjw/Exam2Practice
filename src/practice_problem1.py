@@ -39,9 +39,9 @@ def main():
     # UN-comment tests as you work the problems.
     ####################################################################
 
-    run_test_init()
-#     run_test_append_string()
-#     run_test_double()
+    # run_test_init()
+    # run_test_append_string()
+    run_test_double()
 #     run_test_shrink()
 #     run_test_double_then_shrink()
 #     run_test_reset()
@@ -98,7 +98,6 @@ class Box(object):
             self.contents = ''
         else:
             self.contents = contents
-        self.total_contents = contents
         # --------------------------------------------------------------
         # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
@@ -140,9 +139,20 @@ class Box(object):
         Type hints:
           :type additional_contents: str
         """
-
+        total = self.contents + additional_contents
+        s = ''
+        string = ''
+        if len(total) > self.volume:
+            for k in range(self.volume):
+                string = string + total[k]
+                self.contents = string
+            for k in range(self.volume, len(total), 1):
+                s = s + total[k]
+        else:
+            self.contents = total
+        return s
         # --------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -169,7 +179,7 @@ class Box(object):
         What comes in:
           -- self
         What goes out:
-          Returrns a string that is whatever substring of the
+          Returns a string that is whatever substring of the
           doubled contents did not fit in this Box
           (or the empty string if the entire doubled contents fit)
         Side effects:
@@ -197,8 +207,10 @@ class Box(object):
           #   s is 'Robot Fun'   [this is the part of the doubled
           #                       contents that did NOT fit]
         """
+        left_over = self.append_string(self.contents)
+        return left_over
         # --------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DO: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
