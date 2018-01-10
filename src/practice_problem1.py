@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  IMPLEMENTING CLASSES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Joshua Key.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -39,7 +39,7 @@ def main():
     # UN-comment tests as you work the problems.
     ####################################################################
 
-#     run_test_init()
+    run_test_init()
 #     run_test_append_string()
 #     run_test_double()
 #     run_test_shrink()
@@ -93,8 +93,14 @@ class Box(object):
           :type contents: str
           :type volume: int
         """
+        self.volume = volume
+        if len(contents) > volume:
+            self.contents = ''
+        else:
+            self.contents = contents
+        self.total_contents = contents
         # --------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -134,6 +140,7 @@ class Box(object):
         Type hints:
           :type additional_contents: str
         """
+
         # --------------------------------------------------------------
         # TODO: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
